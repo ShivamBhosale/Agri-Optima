@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../../static/css/main.css">
+    <link rel="stylesheet" href="../../static/css/team.css">
+</head>
+<body>
+    <!--========================= Nav Bar======================  -->
+  <nav class="navbar navbar-expand-lg bg-nav-col2 py-3 fixed-top ">
+    <div class="container">
+      <a href="{% url "home" %}" class="navbar-brand"><strong>Agri-Optima</strong></a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle = "collapse" data-bs-target = "#nav-menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item ">
+            <a href="{% url "home" %}"  class="nav-link nav-link-home">Home</a>
+          </li>
+          <li class="nav-item ">
+            <a href="#services" class="nav-link nav-link-services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a href="#about" class="nav-link  nav-link-about">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="#team" class="nav-link  nav-link-about">Team</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'login' %}" class="nav-link">{% if user.is_authenticated %}Profile{% else %}Login{% endif %}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!--============================ Hero Section========================  -->
+  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="hero-container" >
+      <h1 class="text-center  ">Improve your <span class="text-header-col1">Crop Yield</span> with</h1>
+      <h1 class="text-center "><span class="text-header-col1">Agri-Optima</span></h1>
+      <p class="lead">Join us on a journey to transform agriculture through data science.</p>
+      <div class="text-center mt-2">
+        {% comment %} <button class="btn btn-green-btn btn-lg text-white rounded-pill" data-bs-toggle="modal" data-bs-target="#">Get Started</button> {% endcomment %}
+        <a href="{% url "register" %}" class="btn btn-green-btn btn-lg text-white rounded-pill">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <!--======================= about ================ -->
+  <section id="about" class="p-5 bg-body-1">
+    <div class="container">
+      <div class="row align-items-center justify-content-center ">
+        <div class="col-md">
+          <img src="{% static "img/about.svg" %}" class="img-fluid" alt="fundamentals">
+        </div>
+        <div class="col-md p-5">
+          <h2>Predicting Crop Yields with Precision!</h2>
+          <p class="lead">Empowering farmers with data-driven insights for bountiful harvests. Effortlessly boost your farm's productivity with our intuitive yield predictions.</p>
+          <p>Welcome to the future of farming! We're dedicated to revolutionizing agriculture through data-driven insights. Our state-of-the-art crop yield prediction platform leverages historical data, advanced algorithms, and cutting-edge technology to provide farmers with accurate forecasts. Whether you're a seasoned farmer or just getting started, our platform will help you make informed decisions, maximize your yields, and ensure a prosperous future.</p>
+            <button class="btn btn-green-btn btn-md text-white rounded-pill" data-bs-toggle="modal" data-bs-target="#">Read More</button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+   <!--======================== Services=====================  -->
+   <section id="services" class="p-5 bg-body-2">
+    <div class="container">
+      <div class="text-center text-white">
+        <h1>Services</h1>
+        <p>From Data to Dinner Table, Revolutionizing Crop Yield Forecasting!</p>
+      </div>      
+      <div class="row align-items-center justify-content-center ">      
+        <div class="col-md px-5 py-4 text-center text-white">
+          <div class="h1"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+          <h4>Soil Analysis</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore asperiores dolor reprehenderit enim, numquam suscipit.</p>
+        </div>
+        <div class="col-md px-5 py-4 text-center text-white">
+          <div class="h1"><i class="fa-solid fa-chart-column"></i></div>
+          <h4>Yield Prediction</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore asperiores dolor reprehenderit enim, numquam suscipit.</p>
+        </div>
+        <div class="col-md px-5 py-4 text-center text-white">
+          <div class="h1"><i class="fa-solid fa-leaf"></i></div>
+          <h4>Plant Leaf Diesease Detection</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore asperiores dolor reprehenderit enim, numquam suscipit.</p>
+        </div>
+        
+      </div>
+    </div>
+
+  </section>
+
+  <!--================= Team ===================== -->
+  <section id="team" class="bg-body-6">
+    <div class="container py-5 ">
+      <div class="text-center text-white">
+        <h1>Meet The Team</h1>
+        <p>Discover the individuals who transformed data into actionable insights</p>
+      </div>      
+      <div class="row align-items-center justify-content-center"> 
+        <!--========== Team member-1 ==========-->
+        <div class="col-md">
+          <div class="team-card-container">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="front-side">
+                        <img src="/agri_optima_app/static/img/image-1.jpg" alt="">
+                        <h1>Khondoker Aminuzzaman</h1>
+                        <h2>Full Stack Developer</h2>
+                        <b>khondoker.aminuzzaman@gmail.com</b>
+                        <div class="social-links mt-3 text-center">                          
+                          <a href="https://www.linkedin.com/in/aminuzz110090822/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>                         
+                          <a href="https://github.com/khshohag99" target="_blank"><i class="fa-brands fa-git"></i></a>                       
+                          <a href="https://www.facebook.com/khshohag199/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>                         
+                            <a href="https://www.instagram.com/khshohag99/" target="_blank"><i class="fa-brands fa-instagram"></i></a>                        
+                        </div>                        
+                    </div>
+                    <div class="back-side">
+                        <h1>Project Contribution</h1>
+                        <div class="iner-wrapper">
+                            <div class="skill-bar">
+                              <div class="info"><span>HTML</span></div>
+                              <div class="progress-bar html"><span></span></div>
+                            </div>
+                            <div class="skill-bar">
+                              <div class="info"><span>CSS</span></div>
+                              <div class="progress-bar css"><span></span></div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="info"><span>Bootstrap</span></div>
+                                <div class="progress-bar bootstrap"><span></span></div>
+                            </div>
+                            <div class="skill-bar">
+                              <div class="info"><span>JavaScript</span></div>
+                              <div class="progress-bar javascript"><span></span></div>
+                            </div>
+                            <div class="skill-bar">
+                              <div class="info"><span>Python</span></div>
+                              <div class="progress-bar javascript"><span></span></div>
+                            </div>
+                            <div class="skill-bar">
+                              <div class="info"><span>Django</span></div>
+                              <div class="progress-bar javascript"><span></span></div>
+                            </div>
+                            
+                          </div>
+                          <div class="social-links mt-3 text-center">                          
+                            <a href="https://www.linkedin.com/in/aminuzz110090822/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>                         
+                            <a href="https://github.com/khshohag99" target="_blank"><i class="fa-brands fa-git"></i></a>                       
+                            <a href="https://www.facebook.com/khshohag199/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>                         
+                            <a href="https://www.instagram.com/khshohag99/" target="_blank"><i class="fa-brands fa-instagram"></i></a>                        
+                          </div> 
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div> 
+        <!--========== Divider ==========-->
+        <div class="col-md px-5 py-4 text-center text-white">
+           <img src="/agri_optima_app/static/img/dashboard3.png" alt="" style="width: 16.5rem;">
+        </div>     
+        <!--========== Team member-2 ==========-->
+        <div class="col-md">
+          <div class="team-card-container">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="front-side">
+                        <img src="/agri_optima_app/static/img/image-1.jpg" alt="">
+                        <h1>Shivam Bhosale</h1>
+                        <h2>Data Engineer</h2>
+                        <b>shivambhosale1511@gmail.com</b>
+                        <div class="social-links mt-3 text-center">                          
+                          <a href="" target="_blank"><i class="fa-brands fa-linkedin"></i></a>                         
+                          <a href="" target="_blank"><i class="fa-brands fa-git"></i></a>                       
+                          <a href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>                         
+                          <a href="" target="_blank"><i class="fa-brands fa-instagram"></i></a>                        
+                        </div>                        
+                    </div>
+                    <div class="back-side">
+                        <h1>Project Contribution</h1>
+                        <div class="iner-wrapper">
+                            <div class="skill-bar">
+                              <div class="info"><span>Python</span></div>
+                              <div class="progress-bar html"><span></span></div>
+                            </div>
+                            <div class="skill-bar">
+                              <div class="info"><span>Tensorflow</span></div>
+                              <div class="progress-bar css"><span></span></div>
+                            </div>
+                            <div class="skill-bar">
+                              <div class="info"><span>Keras</span></div>
+                              <div class="progress-bar javascript"><span></span></div>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="info"><span>ML Algorithms</span></div>
+                                <div class="progress-bar bootstrap"><span></span></div>
+                            </div>
+                            <div class="skill-bar">
+                              <div class="info"><span>NumPy & Pandas</span></div>
+                              <div class="progress-bar javascript"><span></span></div>
+                            </div>                            
+                            <div class="skill-bar">
+                              <div class="info"><span>Django</span></div>
+                              <div class="progress-bar javascript"><span></span></div>
+                            </div>
+                            
+                          </div>
+                          <div class="social-links text-center">                          
+                            <a href="https://www.linkedin.com/in/shivambhosale/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>                         
+                            <a href="https://github.com/ShivamBhosale" target="_blank"><i class="fa-brands fa-git"></i></a>                       
+                            <a href="https://www.facebook.com/Shivambhosle99" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>                         
+                            <a href="https://www.instagram.com/shivambhosale_/" target="_blank"><i class="fa-brands fa-instagram"></i></a>                        
+                        </div> 
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>      
+        
+      </div>
+    </div>
+
+  </section>
+
+  <!-- <section class="bg-news-1 text-light p-5">
+    <div class="container">
+      <div class="d-md-flex justify-content-between align-items-center">
+        <h3 class="mb-3 mb-md-0">Signup for newsletter here.</h3>
+        <div class="input-group news-input">
+          <input type="text" class="form-control" placeholder="Enter Email"/>
+          <button class="btn btn-dark btn-lg" type="button" id="button-addon">Button</button>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Show Case 
+  <section class="bg-black text-white p-5 text-center text-sm-start p-lg-0 pt-lg-5">
+    <div class="container">
+      <div class="d-sm-flex align-items-center justify-content-between">
+        <div>
+             <h1>
+              Become a <span class="text-warning"> Web Developer</span>
+             </h1>
+             <p class="lead my-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+              Alias corrupti architecto dignissimos consectetur magni, 
+              atque officiis sint ipsa molestias minima perferendis mollitia numquam recusandae.</p>
+              <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#enroll"> Start The Course</button>
+        </div>
+        <img class="img-fluid w-50 d-none d-sm-block" src="img/showcase.svg" alt="showcase">
+      </div>
+    </div>
+  </section> -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+  <script>
+    var a = "{{ request.path }}";
+    console.log(a);
+    console.log('crazy');
+  </script>
+
+ 
+
+
+  
+  
+</body>
+</html>
