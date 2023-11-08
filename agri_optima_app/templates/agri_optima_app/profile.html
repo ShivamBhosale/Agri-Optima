@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../../static/css/main.css">
+    <link rel="stylesheet" href="../../static/css/profile3.css">
+    <!-- Owl Carousel  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../../static/css/news.css">
+</head>
+<body>
+      <!-- Nav Bar  -->
+  <nav class="navbar navbar-expand-lg bg-nav-profile-col py-3 fixed-top ">
+    <div class="container">
+      <a href="{% url "home" %}" class="navbar-brand"><strong>Agri-Optima</strong></a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle = "collapse" data-bs-target = "#nav-menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item ">
+            <a href="{% url "home" %}"  class="nav-link nav-link-home">Home</a>
+          </li>
+          <li class="nav-item ">
+            <a href="#services" class="nav-link nav-link-services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a href="#about" class="nav-link  nav-link-about">About</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'login' %}" class="nav-link">{% if user.is_authenticated %}Profile{% else %}Login{% endif %}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="header">
+       <div class="side-nav">
+        <div class="user mt-5">
+            <img src="/agri_optima_app/profile_pic/default.jpg" class="user-img" alt="">  
+            <div class="user-prof-info">
+              <h2 id="user-name">{{ request.user }} </h2>
+              <p id="user-fullname">{{request.user.first_name}} {{request.user.last_name}}</p>
+              <p id="user-email">{{ request.user.email}}</p> 
+            </div>                     
+        </div>
+        <ul>
+            <li class="profile-nav" data-target="crop-yield"><i class="fa-solid fa-chart-line"></i><p>Crop Yield</p></li>
+            <li class="profile-nav" data-target="soil-analysis"><i class="fa-solid fa-magnifying-glass-chart"></i><p>Soil Analysis</p></li>
+            <li class="profile-nav" data-target="pldd"><i class="fa-solid fa-leaf"></i><p>PLDD</p></li>
+            <li class="profile-nav" data-target="top-news"><i class="fa-solid fa-newspaper"></i><p>Top News</p></li>            
+            <!-- <li class="profile-nav"><img src="/agri_optima_app/static/img/dashboard.png" alt=""><p>Dashboard</p></li> -->           
+        </ul>
+
+        <ul>
+            <!-- <li class="profile-nav"><img src="/agri_optima_app/static/img/logout.png" alt=""><p>Logout</p></li> -->
+            <li class="profile-nav"><a href="{% url 'logout' %}" id="logout-button"><i class="fa-solid fa-power-off"></i><p>Logout</p></a></li>
+        </ul>
+       </div>
+
+       <div id="main-content">
+        <div id="main-content-sub">
+          <h1 class="main-header">Welcome To <span class="main-header-1">Agri-Optima</span></h1>
+          <div id="hero-content">
+            <h2 class="main-header">Choose a <span class="main-header-2">Service</span> from the <span class="main-header-2">Sidebar</span></h2>
+           
+              <div class="weather">
+                {% if weather_data %}
+                  
+                      <div class="weather-card">
+                        <div>
+                          <p id="weather-date">{{weather_data.date}}</p>
+                        </div>
+
+                        <div class="weather-sub-div-1">
+                          <p id="weather-temperature">{{ weather_data.temperature }}&deg;C</p>
+                          <p id="weather-city">{{ weather_data.city }}</p>
+                          <p id="weather-description">{{ weather_data.description }}</p>
+                        </div>
+
+                        <div class="weather-sub-div-2">
+                          <div class="weather-footer">
+                            <p class="weather-footer-readings">{{ weather_data.humidity }}%</p>
+                            <p class="weather-footer-tags">Humidity</p>
+                          </div>
+
+                          <div class="weather-footer">
+                            <p class="weather-footer-readings">{{ weather_data.wind_speed }}km/h</p>
+                            <p class="weather-footer-tags">Wind</p>
+                          </div>
+
+                          <div class="weather-footer">
+                            <p class="weather-footer-readings">{{ weather_data.feels_like }}&deg;C</p>
+                            <p class="weather-footer-tags">Feels</p>
+                          </div>
+                          
+                        </div>
+                        
+                      </div>
+                  {% else %}
+                      <p>Unable to retrieve weather data.</p>
+                  {% endif %} 
+                  <div>
+                    <!-- <img src="/agri_optima_app/static/img/dashboard3.png" style="height: 280px; margin: 0; padding: 0;" alt=""> -->
+                  </div>
+              </div>              
+
+          </div>
+         
+          <div id="crop-yield" style="display: none;">
+            <h2>Crop Yield</h2>
+          </div>
+          <div id="soil-analysis" style="display: none;">
+            <h2>Soil Analysis</h2> 
+          </div>
+          <div  id="pldd" style="display: none;">
+            <h2>Plant Leaf Disease Detection</h2>
+          </div>
+          <div id="top-news" style="display: none;">
+            <h2>Top News</h2>
+            <section id="slider-container">
+              <div class="container">
+                  <div class="slider">
+                    <div class="owl-carousel">         
+                         
+                      <!-- <div class="slider-card" style="width: 18rem;">
+                        <img src="img/card_1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">Card title</h5>
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                      </div>   -->
+                      
+                      {% for report in canada_reports %}
+                        <div class="slider-card" style="border-radius: 30px;">
+                          <img src="{{report.source_image_url}}" style="border-radius: 10px; height: 200px;" alt="...">
+                          <div class="card-body">
+                            <p class="card-title card-news-header" style="font-size:20px; font-weight: 600;">{{report.source_citation_title}}</p>
+                            <p class="card-text" style="font-size:14px; color:white;">{{report.summary}}</p>                             
+                            <a class="btn btn-secondary" style="margin-bottom: 2px; color:white; font-size:18px"  href="{{report.source_citation_url}}" target="_blank" >Read More</a>
+                          </div>
+                        </div> 
+                      {% endfor %}
+                                         
+            
+                  </div>
+              </div>
+            </section>
+          </div>
+        </div>        
+      </div>
+
+  </div>
+
+<!-- <div class="d-flex flex-column container mt-5">
+    <h1 class="text-center">This will be the Profile Section</h1>
+    <div class="m-xl-5 ">
+        <h2>Welcome back, <span class="text-capitalize">{{ request.user }}</span></h2>
+        <span><a href="{% url 'logout' %}">Logout</a></span>
+        {% if pro_pic %}
+           <p>{{ pro_pic }}</p>
+        {% endif %}
+        <img style="max-width: 150px;" src="/{{pro_pic}}" alt="">
+    </div>
+</div>    -->
+
+<script src="/agri_optima_app/static/js/profile.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+
+<!--================= news api =============================== -->
+<!-- <script>
+  // Get the current date
+  const currentDate = new Date();
+
+ // Time Travaling 20 days before the current date
+ const twentyDaysAgo = new Date(currentDate);
+ twentyDaysAgo.setDate(currentDate.getDate() - 20);
+
+ // Format the dates as strings (e.g., "yyyy-mm-dd")    
+ const twentyDaysAgoStr = twentyDaysAgo.toISOString().split('T')[0];
+ console.log("Date 20 Days Ago:", twentyDaysAgoStr);
+
+
+ const fetchNews = async () => {
+    console.log("Fetching News...");
+    var url = 'https://newsapi.org/v2/everything?' +
+        'q="crop yield"&' +
+        'from=twentyDaysAgoStr&' +
+        'pageSize=10&' +
+        'page=1&' +
+        'language=en&' +
+        'sortBy=popularity,relevancy&' +
+        'apiKey=a4ab888d60424abeb261d7e918c5a709';
+
+    var req = new Request(url);
+
+    try {
+        let a = await fetch(req);
+        let response = await a.json();
+        console.log("API Response:", response); // Log the response object
+        console.log(url);
+        
+        // ... rest of your code for displaying articles
+    } catch (error) {
+        console.error("API Request Error:", error);
+    }
+}
+
+fetchNews();
+
+
+
+ 
+</script> -->
+
+
+<!-- Owl-Carousel-Js  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="/agri_optima_app/static/js/news.js"></script>
+</body>
+</html>

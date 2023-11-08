@@ -1,0 +1,133 @@
+
+.header{
+    width: 100%;
+    height: 100vh;
+    background-image: url("../img/regi-back.jpg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.side-nav{
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 30px 15px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    /* justify-content: center; */
+    width: 100%;
+    font-size: 12px;    
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#user-name{
+    font-size: 25px;
+    font-weight: 600;
+    white-space: nowrap;
+    text-align: center;
+    width: 100%;
+}
+
+#user-fullname{
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+}
+
+#user-email{
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: -10px;
+}
+
+
+
+.user-img{
+    width: 140px;
+    border-radius: 50%;
+    margin: auto;
+    border: 5px solid #8338ec;
+    margin-top: 20px;
+}
+
+ul{
+    list-style: none;
+    padding: 0px 15px;
+    margin: 0px;
+
+}
+
+.profile-nav{
+    /* margin: 5px 0; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#logout-button{
+    text-decoration: none; 
+    color: black; 
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    color: red;
+    margin: 0;
+}
+
+/* .profile-nav i,
+.profile-nav p {
+  display: inline-block; 
+  vertical-align: middle; 
+  font-size: 16px; 
+  margin-right: 10px; 
+} */
+
+
+
+ul li img{
+    width: 30px;
+    margin-right: 10px;
+}
+
+ul li p{
+    white-space: nowrap;
+    margin-top: 0.8rem;
+    margin-left: 1rem;
+}
+
+/*=========================== Main Content CSS ===================================== */
+#main-content {
+    display: flex;
+    margin-left: 111px; 
+    padding: 20px; 
+    margin-top: 6.875rem;
+    width: 100%;
+  }
+  
+#main-content-sub {
+    width: 100%;
+    margin: auto; 
+    text-align: center; 
+  }
