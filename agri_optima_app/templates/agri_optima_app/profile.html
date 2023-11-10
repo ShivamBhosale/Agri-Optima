@@ -118,10 +118,55 @@
          
           <div id="crop-yield" style="display: none;">
             <h2>Crop Yield</h2>
+            <p>Crop Yield Analysis</p>
           </div>
           <div id="soil-analysis" style="display: none;">
             <h2>Soil Analysis</h2> 
-          </div>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit">Upload Image</button>
+            </form>
+        
+            {% if form.instance.image %}
+                <h3>Uploaded Image</h3>
+                <img src="{{ form.instance.image.url }}" alt="Uploaded Image">
+            {% endif %}
+        
+            {% if result %}
+                <h3>Classification Result</h3>
+                <p>{{ result }}</p>
+        
+                {% if result == "Black Soil" %}
+                    <h3>Black Soil Information</h3>
+                    <p>pH: 7.2 – 8.5</p>
+                    <p>Ideal Crops: Sugarcane, wheat, jawar, rice, citrus fruits, sunflower, linseed.</p>
+                    <p>Moisture Holding Capacity: Good (29-30 percent)</p>
+                {% elif result == "Cinder Soil" %}
+                    <h3>Cinder Soil Information</h3>
+                    <p>pH: >8.0</p>
+                    <p>Ideal Plants: Succulents (Aloe Vera, Jade Plant, Panda plant)</p>
+                    <p>Moisture Holding Capacity: Poor (Mostly used for drainage)</p>
+                {% elif result == "Laterite Soil" %}
+                    <h3>Laterite Soil Information</h3>
+                    <p>pH: <4.5</p>
+                    <p>Ideal Crops: Tea, coffee, and cashew</p>
+                    <p>Moisture Holding Capacity: Fair (13.2-20 percent)</p>
+                {% elif result == "Peat Soil" %}
+                    <h3>Peat Soil Information</h3>
+                    <p>pH: 3.7-5.2</p>
+                    <p>Ideal Crops: Potatoes, sugar beet, celery, onions, carrots, lettuce</p>
+                    <p>Moisture Holding Capacity: Very Good (90 percent)</p>
+                {% elif result == "Yellow Soil" %}
+                    <h3>Yellow Soil Information</h3>
+                    <p>pH: 5.5-7.5</p>
+                    <p>Ideal Crops: Maize, groundnut, rice, fruits like mango, orange, vegetables, potato, and pulses</p>
+                    <p>Moisture Holding Capacity: Good (30-40 percent)</p>
+                {% endif %}
+                
+            {% endif %}
+        </div>
+        
           <div  id="pldd" style="display: none;">
             <h2>Plant Leaf Disease Detection</h2>
           </div>

@@ -4,7 +4,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm
+from .forms import CreateUserForm, ImageUploadForm
+from .utils import classify_image
 
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -213,8 +214,18 @@ def profile(request):
     and report.get("tag") in ["society & culture", "business & economics", "science & technology", "politics & government"]
     and len(report.get("source_citation_title").split()) < 17
     ]
+    classification_result = None
+    if request.method == 'POST':
+        form = ImageUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            classification_result = classify_image(form.instance.image)
+    else:
+        form = ImageUploadForm()
+
+    return render(request, 'agri_optima_app/profile.html', {'weather_data': weather_data, 'canada_reports': canada_reports, 'form': form, 'result': classification_result})
 
     
-    return render(request, 'agri_optima_app/profile.html', {'weather_data':weather_data,'canada_reports': canada_reports})
-    return render(request, 'agri_optima_app/profile.html',{'pro_pic': pro_pic})
+    # return render(request, 'agri_optima_app/profile.html', {'weather_data':weather_data,'canada_reports': canada_reports})
+    # return render(request, 'agri_optima_app/profile.html',{'pro_pic': pro_pic})
     

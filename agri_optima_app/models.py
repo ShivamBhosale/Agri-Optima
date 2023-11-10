@@ -7,3 +7,6 @@ class UserInfo(models.Model):
 
     def __str__(self):
         return self.uname
+    
+class UploadedImage(models.Model):
+    image = models.ImageField(upload_to='uploads/')
