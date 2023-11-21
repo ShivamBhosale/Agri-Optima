@@ -51,6 +51,40 @@ class PlantImageUploadForm(forms.ModelForm):
         fields = ['image']
 
 
+class CropYieldForm(forms.Form):
+
+    area = forms.FloatField(
+        label="Area",
+        widget=forms.TextInput(attrs={'placeholder': 'Enter the area'}),
+        required=False,
+    )
+
+    item = forms.FloatField(
+        label="Item",
+        widget=forms.TextInput(attrs={'placeholder': 'Enter the item'}),
+        required=False,
+    )
+    
+    
+    average_temp = forms.FloatField(
+        label="Average Temp",
+        widget=forms.TextInput(attrs={'placeholder': 'Enter the average temperature'}),
+        required=False,
+    )
+
+    pesticide_amount = forms.FloatField(
+        label="Pesticide Amount",
+        widget=forms.TextInput(attrs={'placeholder': 'Enter the pesticide amount'}),
+        required=False,
+    )
+
+    average_rain = forms.FloatField(
+        label="Average Rain",
+        widget=forms.TextInput(attrs={'placeholder': 'Enter the average rainfall'}),
+        required=False,
+    )
+    
+
 
 
 

@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm, SoilImageUploadForm, PlantImageUploadForm
+from .forms import CreateUserForm, SoilImageUploadForm, PlantImageUploadForm, CropYieldForm
 from .utils import classify_image_soil, classify_image_plant
 
 from django.contrib import messages
@@ -15,6 +15,9 @@ from django.core.exceptions import ObjectDoesNotExist
 import requests
 import geocoder
 import datetime
+import joblib
+import numpy as np
+from sklearn.impute import SimpleImputer
 
 @login_required(login_url='login')
 
@@ -199,7 +202,7 @@ def profile(request):
 
     #=================== News API ===============================
 
-    news_api_key = "6e2b5f090ea281cd38a26fa3c313991a"
+    news_api_key = "339fcdc7270abe92937c11a3b17558a5"
     url = "https://api.worldapi.com/reports?term=crops%20in%20canada&limit=20&offset=0&use_nlp=1&api_key="
     response = requests.get(url + news_api_key)
     data = response.json()
@@ -222,6 +225,9 @@ def profile(request):
     classification_result_plant = None
     form = SoilImageUploadForm()
     form_plant = PlantImageUploadForm()
+    rf_model = joblib.load('agri_optima_app/templates/agri_optima_app/Canada_Decision_Tree_Model.pkl')
+    rf_result = None
+    rf_form = CropYieldForm()
 
     if request.method == 'POST':
         if 'soil_form_submit' in request.POST:
@@ -234,26 +240,36 @@ def profile(request):
             if form_plant.is_valid():
                 form_plant.save()
                 classification_result_plant = classify_image_plant(form_plant.instance.image)
+        
+        elif 'rf_form_submit' in request.POST:
+            rf_form = CropYieldForm(request.POST)
+
+            if rf_form.is_valid():
+                # Extract features from the form
+                area = rf_form.cleaned_data['area']
+                item = rf_form.cleaned_data['item']
+                average_temp = rf_form.cleaned_data['average_temp']
+                pesticide_amount = rf_form.cleaned_data['pesticide_amount']
+                average_rain = rf_form.cleaned_data['average_rain']
+
+            input_features = [
+                    area, item, average_temp, pesticide_amount, average_rain,
+                    
+                ]
+            
+            input_features = np.array([area, item, average_temp, pesticide_amount, average_rain]).reshape(1, -1)
+
+
+            imputer = SimpleImputer(strategy='mean')
+            input_features_imputed = imputer.fit_transform(input_features)
+
+            # Make predictions using the loaded RandomForest model
+            yield_prediction = rf_model.predict(input_features_imputed)
+
+            # Set the result to be displayed in the template
+            rf_result = yield_prediction[0]
     
-    # if request.method == 'POST':
-    #     form = SoilImageUploadForm(request.POST, request.FILES)
-    #     if form.is_valid():
-    #         form.save()
-    #         classification_result = classify_image_soil(form.instance.image)
-    # else:
-    #     form = SoilImageUploadForm()
-
-    # #==================== Plant Leaf Disease Analysis ==========================
    
-    # classification_result_plant = None
-    # if request.method == 'POST':
-    #     form_plant = PlantImageUploadForm(request.POST, request.FILES)
-    #     if form_plant.is_valid():
-    #         form_plant.save()
-    #         classification_result_plant = classify_image_plant(form_plant.instance.image)
-    # else:
-    #     form_plant = PlantImageUploadForm()
-
     
 
 
@@ -263,7 +279,9 @@ def profile(request):
         'form': form,
         'form_plant': form_plant,
         'result': classification_result,
-        'result_plant': classification_result_plant
+        'result_plant': classification_result_plant,
+        'rf_form': rf_form,
+        'rf_result': rf_result,
     })
     
     # return render(request, 'agri_optima_app/profile.html', {'weather_data':weather_data,'canada_reports': canada_reports})
