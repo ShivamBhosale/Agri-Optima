@@ -118,13 +118,80 @@
          
           <div id="crop-yield" style="display: none;">
             <h2>Crop Yield</h2>
+            <p>Crop Yield Analysis</p>
           </div>
           <div id="soil-analysis" style="display: none;">
             <h2>Soil Analysis</h2> 
-          </div>
-          <div  id="pldd" style="display: none;">
-            <h2>Plant Leaf Disease Detection</h2>
-          </div>
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <input type="hidden" name="soil_form_submit">
+              {{ form }}
+              <button type="submit">Upload Image</button>
+          </form>
+        
+            {% if form.instance.image %}
+                <h3>Uploaded Image</h3>
+                <img src="{{ form.instance.image.url }}" alt="Uploaded Image" width="250px">
+            {% endif %}
+        
+            {% if result %}
+                <h3>Classification Result</h3>
+                <p id="classification-result">{{ result }}</p>
+        
+                {% if result == "Black Soil" %}
+                    <h3>Black Soil Information</h3>
+                    <p>pH: 7.2 – 8.5</p>
+                    <p>Ideal Crops: Sugarcane, wheat, jawar, rice, citrus fruits, sunflower, linseed.</p>
+                    <p>Moisture Holding Capacity: Good (29-30 percent)</p>
+                {% elif result == "Cinder Soil" %}
+                    <h3>Cinder Soil Information</h3>
+                    <p>pH: >8.0</p>
+                    <p>Ideal Plants: Succulents (Aloe Vera, Jade Plant, Panda plant)</p>
+                    <p>Moisture Holding Capacity: Poor (Mostly used for drainage)</p>
+                {% elif result == "Laterite Soil" %}
+                    <h3>Laterite Soil Information</h3>
+                    <p>pH: <4.5</p>
+                    <p>Ideal Crops: Tea, coffee, and cashew</p>
+                    <p>Moisture Holding Capacity: Fair (13.2-20 percent)</p>
+                {% elif result == "Peat Soil" %}
+                    <h3>Peat Soil Information</h3>
+                    <p>pH: 3.7-5.2</p>
+                    <p>Ideal Crops: Potatoes, sugar beet, celery, onions, carrots, lettuce</p>
+                    <p>Moisture Holding Capacity: Very Good (90 percent)</p>
+                {% elif result == "Yellow Soil" %}
+                    <h3>Yellow Soil Information</h3>
+                    <p>pH: 5.5-7.5</p>
+                    <p>Ideal Crops: Maize, groundnut, rice, fruits like mango, orange, vegetables, potato, and pulses</p>
+                    <p>Moisture Holding Capacity: Good (30-40 percent)</p>
+                {% endif %}
+               
+            {% endif %}
+        </div>
+        <div id="pldd" style="display: none;">
+          <h2>Plant Leaf Disease Detection</h2>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="plant_form_submit">
+            {{ form_plant }}
+            <button type="submit">Upload Leaf Image</button>
+        </form>
+          {% if form_plant.instance.image %}
+              <h3>Uploaded Leaf Image</h3>
+              <img src="{{ form_plant.instance.image.url }}" alt="Uploaded Leaf Image" width="250px">
+          {% endif %}
+      
+          {% if result_plant %}
+              <h3>Classification Result</h3>
+              <p id="classification-result-plant">{{ result_plant }}</p>
+      
+              <!-- Display specific information based on the classification result -->
+              {% if result_plant in plant_classes %}
+                  <!-- Add details or information related to the specific plant disease -->
+                  <!-- Example: Display specific information based on the plant disease -->
+              {% endif %}
+          {% endif %}
+      </div>
+      
           <div id="top-news" style="display: none;">
             <h2>Top News</h2>
             <section id="slider-container">
@@ -232,5 +299,6 @@ fetchNews();
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="/agri_optima_app/static/js/news.js"></script>
+
 </body>
 </html>
