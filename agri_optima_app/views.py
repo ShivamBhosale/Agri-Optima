@@ -4,8 +4,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm, ImageUploadForm
-from .utils import classify_image
+from .forms import CreateUserForm, SoilImageUploadForm, PlantImageUploadForm
+from .utils import classify_image_soil, classify_image_plant
 
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -16,7 +16,7 @@ import requests
 import geocoder
 import datetime
 
-
+@login_required(login_url='login')
 
 def dummy(request):
      # in python
@@ -214,17 +214,57 @@ def profile(request):
     and report.get("tag") in ["society & culture", "business & economics", "science & technology", "politics & government"]
     and len(report.get("source_citation_title").split()) < 17
     ]
+
+    #==================== Soil Analysis and Plant Leaf Analysis ==========================
+    
+
     classification_result = None
+    classification_result_plant = None
+    form = SoilImageUploadForm()
+    form_plant = PlantImageUploadForm()
+
     if request.method == 'POST':
-        form = ImageUploadForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            classification_result = classify_image(form.instance.image)
-    else:
-        form = ImageUploadForm()
+        if 'soil_form_submit' in request.POST:
+            form = SoilImageUploadForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                classification_result = classify_image_soil(form.instance.image)
+        elif 'plant_form_submit' in request.POST:
+            form_plant = PlantImageUploadForm(request.POST, request.FILES)
+            if form_plant.is_valid():
+                form_plant.save()
+                classification_result_plant = classify_image_plant(form_plant.instance.image)
+    
+    # if request.method == 'POST':
+    #     form = SoilImageUploadForm(request.POST, request.FILES)
+    #     if form.is_valid():
+    #         form.save()
+    #         classification_result = classify_image_soil(form.instance.image)
+    # else:
+    #     form = SoilImageUploadForm()
 
-    return render(request, 'agri_optima_app/profile.html', {'weather_data': weather_data, 'canada_reports': canada_reports, 'form': form, 'result': classification_result})
+    # #==================== Plant Leaf Disease Analysis ==========================
+   
+    # classification_result_plant = None
+    # if request.method == 'POST':
+    #     form_plant = PlantImageUploadForm(request.POST, request.FILES)
+    #     if form_plant.is_valid():
+    #         form_plant.save()
+    #         classification_result_plant = classify_image_plant(form_plant.instance.image)
+    # else:
+    #     form_plant = PlantImageUploadForm()
 
+    
+
+
+    return render(request, 'agri_optima_app/profile.html', {
+        'weather_data': weather_data,
+        'canada_reports': canada_reports,
+        'form': form,
+        'form_plant': form_plant,
+        'result': classification_result,
+        'result_plant': classification_result_plant
+    })
     
     # return render(request, 'agri_optima_app/profile.html', {'weather_data':weather_data,'canada_reports': canada_reports})
     # return render(request, 'agri_optima_app/profile.html',{'pro_pic': pro_pic})

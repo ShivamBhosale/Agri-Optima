@@ -2,7 +2,7 @@ from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import UploadedImage
+from .models import SoilImage, PlantImage
 
 
 class CreateUserForm(UserCreationForm):
@@ -40,9 +40,14 @@ class CreateUserForm(UserCreationForm):
         })
 
 
-class ImageUploadForm(forms.ModelForm):
+class SoilImageUploadForm(forms.ModelForm):
     class Meta:
-        model = UploadedImage
+        model = SoilImage
+        fields = ['image']
+
+class PlantImageUploadForm(forms.ModelForm):
+    class Meta:
+        model = PlantImage
         fields = ['image']
 
 

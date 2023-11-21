@@ -8,5 +8,16 @@ class UserInfo(models.Model):
     def __str__(self):
         return self.uname
     
-class UploadedImage(models.Model):
-    image = models.ImageField(upload_to='uploads/')
+class SoilImage(models.Model):
+    image = models.ImageField(upload_to='soil_images/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Soil Image {self.id}"
+
+class PlantImage(models.Model):
+    image = models.ImageField(upload_to='plant_images/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Plant Image {self.id}"
