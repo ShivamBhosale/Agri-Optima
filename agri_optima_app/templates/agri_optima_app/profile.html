@@ -119,7 +119,19 @@
           <div id="crop-yield" style="display: none;">
             <h2>Crop Yield</h2>
             <p>Crop Yield Analysis</p>
-          </div>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ rf_form.as_p }}
+                <button type="submit" name="rf_form_submit">Calculate</button>
+            </form>
+            
+            {% if rf_result is not None %}
+                <h3>Calculation Result</h3>
+                <p>{{ rf_result }}</p>
+                <!-- Display additional information or results here -->
+            {% endif %}
+        </div>
+
           <div id="soil-analysis" style="display: none;">
             <h2>Soil Analysis</h2> 
             <form method="post" enctype="multipart/form-data">
