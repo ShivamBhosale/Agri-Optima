@@ -11,6 +11,8 @@ urlpatterns = [
    path('logout/', views.logoutUser, name='logout'),
    path('profile/', views.profile, name='profile'),
    path('dummy/', views.dummy, name='dummy'),
+   # path('yield/', views.yield_result, name='yield_result'), 
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

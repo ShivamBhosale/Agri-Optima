@@ -14,6 +14,7 @@ from django.shortcuts import render, redirect
 from .forms import CreateUserForm, SoilImageUploadForm, PlantImageUploadForm, CropYieldForm
 from .utils import classify_image_soil, classify_image_plant
 from agri_optima_app.models import UserInfo
+from django.http import HttpResponseRedirect
 
 @login_required(login_url='login')
 def dummy(request):
@@ -187,6 +188,8 @@ def profile(request):
 
                 # Set the result to be displayed in the template
                 rf_result = yield_prediction[0]
+                
+
 
     return render(request, 'agri_optima_app/profile.html', {
         'weather_data': weather_data,
@@ -198,3 +201,5 @@ def profile(request):
         'rf_form': rf_form,
         'rf_result': rf_result,
     })
+
+

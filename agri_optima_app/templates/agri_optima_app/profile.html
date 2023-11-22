@@ -119,7 +119,7 @@
           <div id="crop-yield" style="display: none;">
             <h2>Crop Yield</h2>
             <p>Crop Yield Analysis</p>
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data" >
                 {% csrf_token %}
                 {{ rf_form.as_p }}
                 <button type="submit" name="rf_form_submit">Calculate</button>
@@ -127,18 +127,18 @@
             
             {% if rf_result is not None %}
                 <h3>Calculation Result</h3>
-                <p>{{ rf_result }}</p>
+                <p>{{ rf_result }} Yield/hectare</p>
                 <!-- Display additional information or results here -->
             {% endif %}
         </div>
 
           <div id="soil-analysis" style="display: none;">
             <h2>Soil Analysis</h2> 
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data" >
               {% csrf_token %}
-              <input type="hidden" name="soil_form_submit">
+              <input type="hidden" name="soil_form_submit" >
               {{ form }}
-              <button type="submit">Upload Image</button>
+              <button type="submit" id="soil-image">Upload Image</button>
           </form>
         
             {% if form.instance.image %}
@@ -311,6 +311,8 @@ fetchNews();
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="/agri_optima_app/static/js/news.js"></script>
+
+
 
 </body>
 </html>
