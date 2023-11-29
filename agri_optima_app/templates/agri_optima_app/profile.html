@@ -117,8 +117,8 @@
           </div>
          
           <div id="crop-yield" style="display: none;">
-            <h2>Crop Yield</h2>
-            <p>Crop Yield Analysis</p>
+            <h2>Crop Yield Analysis</h2>
+           
             <form method="post" enctype="multipart/form-data" >
                 {% csrf_token %}
                 {{ rf_form.as_p }}
@@ -366,6 +366,122 @@ fetchNews();
     color: #333;
     margin-bottom: 15px;
 }
+
+#pldd {
+            display: none;
+            padding: 20px;
+            background-color: rgba(245, 245, 245, 0.5); /* Transparent background */
+            border-radius: 20px; /* Increased border-radius for rounder edges */
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjusted shadow */
+        }
+
+        #pldd h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        #pldd form {
+            margin-bottom: 20px;
+        }
+
+        #pldd button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #pldd button:hover {
+            background-color: #45a049;
+        }
+
+        #pldd h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        #pldd p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        #classification-result-plant {
+            font-weight: bold;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        #crop-yield {
+            display: none;
+            padding: 20px;
+            background-color: rgba(245, 245, 245, 0.5); /* Transparent background */
+            border-radius: 20px; /* Increased border-radius for rounder edges */
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjusted shadow */
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #crop-yield h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        #crop-yield p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        #crop-yield form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #crop-yield form input[type="text"],
+        #crop-yield form button {
+            padding: 10px 20px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s ease;
+        }
+
+        #crop-yield form input[type="text"]:focus,
+        #crop-yield form button:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        #crop-yield form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #crop-yield form button:hover {
+            background-color: #45a049;
+        }
+
+        #crop-yield h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        #crop-yield p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
 
 </style>
 </html>
