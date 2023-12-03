@@ -193,14 +193,56 @@
           {% endif %}
       
           {% if result_plant %}
-              <h3>Classification Result</h3>
-              <p id="classification-result-plant">{{ result_plant }}</p>
+              
+              <p id="classification-result-plant">The detected diease is: {{ result_plant }}</p>
       
               <!-- Display specific information based on the classification result -->
-              {% if result_plant in plant_classes %}
+              
                   <!-- Add details or information related to the specific plant disease -->
+                  {% if result_plant == "Apple Scab" %}
+                      <h3>Apple Scab Information</h3>
+                      <p>Apple scab is a disease of Malus trees, such as apple trees, caused by the ascomycete fungus Venturia inaequalis. The disease manifests as dull black or grey-brown lesions on the surface of tree leaves, buds or fruits.</p>
+                      
+                      <p>Fungicides could be used to prevent and cure the apple scab disease. Some of them are Bordeaux mixtures, copper soaps (copper octanoate), sulfur, mineral or neem oils, and myclobutanil.</p>
+                      <p>Source: <a href="https://en.wikipedia.org/wiki/Apple_scab" target="_blank">Wikipedia</a></p>
+                  {% elif result_plant == "Corn Common Rust" %}
+                      <h3>Corn Common Rust Information</h3>
+                      <p>Common rust is a foliar disease that affects sweet corn in all corn-growing regions of the United States and southern Canada. The disease is caused by the fungus Puccinia sorghi and occurs wherever corn is grown.</p>
+                      <p>Common rust can be controlled by planting resistant varieties, crop rotation, and fungicides. Fungicides are most effective when applied at the first sign of disease.</p>
+                      <p>Source: <a href="https://en.wikipedia.org/wiki/Puccinia_sorghi" target="_blank">Wikipedia</a></p>
+                  {% elif result_plant == "Orange Haunglongbing (Citrus_greening)" %}
+                      <h3>Orange Haunglongbing (Citrus_greening) Information</h3>
+                      <p>Orange Huanglongbing (HLB) is a destructive citrus disease caused by a bacterium transmitted by Asian citrus psyllids, leading to misshapen, bitter fruit, tree decline, and eventual deat</p>
+                      
+                      <p>Managing Orange Huanglongbing involves controlling psyllid populations, using disease-free plants, researching resistant varieties, and ongoing efforts to find treatments or prevention strategies for affected citrus trees.</p>
+                      <p>Source: <a href="https://en.wikipedia.org/wiki/Citrus_greening_disease" target="_blank">Wikipedia</a></p>
+                  {% elif result_plant == "Peach Bacterial Spot" %}
+                      <h3>Peach Bacterial Spot Information</h3>
+                      <p>Peach bacterial spot is a disease caused by the bacterium Xanthomonas arboricola. It manifests as dark spots on leaves and fruit.</p>
+                      
+                      <p>To manage it, use copper-based sprays, practice good orchard sanitation, and employ resistant cultivars when possible. Regular pruning to improve air circulation can also help reduce its impact</p>
+                      <p>Source: <a href="https://en.wikipedia.org/wiki/Bacterial_spot_of_peach" target="_blank">Wikipedia</a></p>
+                  {% elif result_plant == "Potato Blight" %}
+                      <h3>Potato Blight Information</h3>
+                      <p>Potato blight, also known as late blight, is a destructive disease caused by the fungus-like organism Phytophthora infestans. It affects potato plants, causing dark, water-soaked lesions on leaves, stems, and tubers.</p>
+                      
+                      <p>To manage blight, employ preventive measures like crop rotation, planting disease-resistant varieties, and using fungicides when necessary. Timely harvesting and removing infected plant debris can also help prevent its spread.</p>
+                      <p>Source: <a href="https://en.wikipedia.org/wiki/Phytophthora_infestans" target="_blank">Wikipedia</a></p>
+                  {% elif result_plant == "Squash Powdery Mildew" %}
+                      <h3>Squash Powdery Mildew Information</h3>
+                      <p>Squash powdery mildew is a fungal disease caused by various species of the Podosphaera and Erysiphe genera. It appears as a white, powdery growth on the leaves, stems, and sometimes fruit of squash plants. It can weaken the plant and reduce yield.</p>
+                      
+                      <p>To manage it, apply fungicides early in the season, employ resistant varieties, practice proper spacing for air circulation, and use cultural methods like removing infected plant parts to reduce its impact. Organic treatments like neem oil or baking soda solutions can also help control its spread.</p>
+                      <p>Source: <a href="https://en.wikipedia.org/wiki/Powdery_mildew" target="_blank">Wikipedia</a></p>
+                  {% elif result_plant == "Tomato Yellow Leaf Curl Virus" %}
+                      <h3>Tomato Yellow Leaf Curl Virus Information</h3>
+                      <p>Tomato Yellow Leaf Curl Virus (TYLCV) is a viral disease affecting tomato plants. It is transmitted by the whitefly insect and leads to severe damage in tomato crops. Symptoms include yellowing and upward curling of leaves, stunted growth, and reduced fruit production.</p>
+                      
+                      <p>Controlling whitefly populations through insecticides, using reflective mulches to deter whiteflies, employing resistant tomato varieties, and practicing crop rotation are common methods to manage the spread of TYLCV.</p>
+                      <p>Source: <a href="https://en.wikipedia.org/wiki/Tomato_yellow_leaf_curl_virus" target="_blank">Wikipedia</a></p>
+                  {% endif %}
                   <!-- Example: Display specific information based on the plant disease -->
-              {% endif %}
+             
           {% endif %}
       </div>
       
@@ -369,11 +411,12 @@ fetchNews();
 
 #pldd {
             display: none;
-            padding: 20px;
+            padding: 10px;
             background-color: rgba(245, 245, 245, 0.5); /* Transparent background */
             border-radius: 20px; /* Increased border-radius for rounder edges */
             margin-top: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjusted shadow */
+            overflow-y: auto;
         }
 
         #pldd h2 {

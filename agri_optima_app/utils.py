@@ -40,9 +40,9 @@ def classify_image_soil(image):
 # ]
 
 plant_classes = [
-'Apple scab', 'Corn Common Rust',
- 'Orange Haunglongbing (Citrus_greening)', 'Peach Bacterial_spot',
- 'Potato blight', 'Squash Powdery mildew',
+'Apple Scab', 'Corn Common Rust',
+ 'Orange Haunglongbing (Citrus_greening)', 'Peach Bacterial Spot',
+ 'Potato Blight', 'Squash Powdery Mildew',
  'Tomato Yellow Leaf Curl Virus'
 ]
 
