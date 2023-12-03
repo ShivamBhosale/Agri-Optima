@@ -136,7 +136,7 @@ def profile(request):
         weather_data = None
 
     # Fetching news reports and handling soil/plant analysis
-    news_api_key = "339fcdc7270abe92937c11a3b17558a5"
+    # news_api_key = "436b9f29eb13fb237b6731e8e6c14ac3"
     url = "https://api.worldapi.com/reports?term=crops%20in%20canada&limit=20&offset=0&use_nlp=1&api_key="
     response = requests.get(url + news_api_key)
     data = response.json()

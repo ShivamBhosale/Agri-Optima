@@ -1,1 +1,0 @@
-web: gunicorn agr-optima.wsgi
