@@ -40,13 +40,13 @@ def classify_image_soil(image):
 # ]
 
 plant_classes = [
-'Apple___Apple_scab', 'Apple___Black_rot',
- 'Orange___Haunglongbing_(Citrus_greening)', 'Peach___Bacterial_spot',
- 'Potato_blight', 'Squash___Powdery_mildew',
- 'Tomato_Yellow_Leaf_Curl_Virus'
+'Apple scab', 'Corn Common Rust',
+ 'Orange Haunglongbing (Citrus_greening)', 'Peach Bacterial_spot',
+ 'Potato blight', 'Squash Powdery mildew',
+ 'Tomato Yellow Leaf Curl Virus'
 ]
 
-plant_leaf_model = tf.keras.models.load_model('agri_optima_app/templates/agri_optima_app/smallPLD.h5')
+plant_leaf_model = tf.keras.models.load_model('agri_optima_app/templates/agri_optima_app/PLD_T4_model_final.h5')
 
 def classify_image_plant(image):
     img = Image.open(image)
