@@ -30,16 +30,23 @@ def classify_image_soil(image):
     return predicted_class_label
 
 
+# plant_classes = [
+#     'Apple___Apple_scab', 'Apple___Black_rot', 'Apple___healthy',
+#     'Orange___Haunglongbing_(Citrus_greening)', 'Peach___Bacterial_spot',
+#     'Potato_blight', 'Soybean___healthy', 'Squash___Powdery_mildew',
+#     'Tomato___Bacterial_spot', 'Tomato___Late_blight',
+#     'Tomato___Septoria_leaf_spot', 'Tomato___Tomato_Yellow_Leaf_Curl_Virus',
+#     'Tomato___healthy'
+# ]
+
 plant_classes = [
-    'Apple___Apple_scab', 'Apple___Black_rot', 'Apple___healthy',
-    'Orange___Haunglongbing_(Citrus_greening)', 'Peach___Bacterial_spot',
-    'Potato_blight', 'Soybean___healthy', 'Squash___Powdery_mildew',
-    'Tomato___Bacterial_spot', 'Tomato___Late_blight',
-    'Tomato___Septoria_leaf_spot', 'Tomato___Tomato_Yellow_Leaf_Curl_Virus',
-    'Tomato___healthy'
+'Apple___Apple_scab', 'Apple___Black_rot',
+ 'Orange___Haunglongbing_(Citrus_greening)', 'Peach___Bacterial_spot',
+ 'Potato_blight', 'Squash___Powdery_mildew',
+ 'Tomato_Yellow_Leaf_Curl_Virus'
 ]
 
-plant_leaf_model = tf.keras.models.load_model('agri_optima_app/templates/agri_optima_app/PLD_T4_model.keras')
+plant_leaf_model = tf.keras.models.load_model('agri_optima_app/templates/agri_optima_app/smallPLD.h5')
 
 def classify_image_plant(image):
     img = Image.open(image)
