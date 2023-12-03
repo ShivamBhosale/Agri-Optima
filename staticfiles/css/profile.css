@@ -1,0 +1,248 @@
+
+.header{
+    width: 100%;
+    height: 100vh;
+    background-image: url("../img/regi-back.jpg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.side-nav{
+    width: 110px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 30px 15px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    transition: width 0.5s;
+}
+
+.user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 60px;
+    font-size: 12px;    
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+.user-prof-info{
+  display: none;
+}
+
+#user-name{
+    font-size: 25px;
+    font-weight: 600;
+    white-space: nowrap;
+    text-align: center;
+    width: 100%;
+}
+
+#user-fullname{
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+}
+
+#user-email{
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: -10px;
+}
+
+
+
+.user-img{
+    width: 40px;
+    border-radius: 50%;
+    margin: auto;
+    border: 5px solid #8338ec;
+    margin-top: 20px;
+}
+
+ul{
+    list-style: none;
+    padding: 0px 15px;
+    margin: 0px;
+
+}
+
+.profile-nav{
+    margin: 50px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#logout-button{
+    text-decoration: none; 
+    color: black; 
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    color: red;
+    margin: 0;
+}
+
+
+ul li img{
+    width: 30px;
+    margin-right: 10px;
+}
+
+ul li p{
+    white-space: nowrap;
+    margin-top: 0.8rem;
+    margin-left: 1rem;
+    display: none;
+}
+
+
+.side-nav:hover{
+    width: 250px;
+}
+
+.side-nav:hover .user-prof-info{
+    display: block;
+}
+
+.side-nav:hover .user{
+    width: 100%;
+}
+
+.side-nav:hover .user-img{
+    width: 140px;
+}
+
+.side-nav:hover .profile-nav{
+    margin: 0;
+    justify-content: flex-start;
+}
+
+.side-nav:hover ul li p{
+    display: block;
+}
+
+
+
+
+/*=========================== Main Content CSS ===================================== */
+
+.side-nav:hover + #main-content {
+    margin-left: 251px;
+  }
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 111px; 
+    padding: 20px; 
+    margin-top: 6rem;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    
+}
+  
+#main-content-sub {
+    width: 100%;
+    margin: auto; 
+}
+.main-header{
+    font-weight: 600;
+    color: #101820;
+}
+.main-header-1{
+    color: #3A6B35;
+    /* color: #EAD65A; */
+  }
+.main-header-2{
+    color: #2F3C7E;
+    /* color: #317773; */
+  }
+ 
+
+
+.weather-card {
+    background: rgba(139, 140, 137, 0.6);
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    width: 500px;
+    margin: 1rem auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 45vh;
+    padding: 15px;
+    color: white;
+}
+
+#weather-date{
+    font-weight: 500;
+}
+.weather-sub-div-1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.weather-sub-div-1 p{
+    margin: 0;
+    padding: 0;
+}
+
+.weather-sub-div-2{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    text-align: center;
+}
+
+.weather-footer p{
+    margin: 0;
+    padding: 0;
+}
+
+#weather-temperature{
+    font-size: 65px;
+    font-weight: 800;
+    padding: 0;
+    margin: 0;
+}
+#weather-city{
+    font-size: 15px;
+    font-weight: 800;
+}
+
+
+.weather-footer-readings{
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.weather-footer-tags{
+    font-size: 11px;
+}
+
+
+
