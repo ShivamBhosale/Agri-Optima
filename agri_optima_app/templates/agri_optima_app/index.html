@@ -35,7 +35,7 @@
             <a href="#team" class="nav-link  nav-link-about">Team</a>
           </li>
           <li class="nav-item">
-            <a href="{% url 'login' %}" class="nav-link">{% if user.is_authenticated %}Profile{% else %}Login{% endif %}</a>
+            <a href="{% url 'login' %}" class="nav-link">{% if user.is_authenticated %}{% else %}Login{% endif %}</a>
           </li>
         </ul>
       </div>
@@ -80,21 +80,21 @@
         <h1>Services</h1>
         <p>From Data to Dinner Table, Revolutionizing Crop Yield Forecasting!</p>
       </div>      
-      <div class="row align-items-center justify-content-center ">      
+      <div class="row align-items-start justify-content-center ">      
         <div class="col-md px-5 py-4 text-center text-white">
           <div class="h1"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
           <h4>Soil Analysis</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore asperiores dolor reprehenderit enim, numquam suscipit.</p>
+          <p>Uncover the secrets of your soil with our advanced Convolutional Neural Networks. Identify soil types and quality, empowering you to make informed decisions for your crops.</p>
         </div>
         <div class="col-md px-5 py-4 text-center text-white">
           <div class="h1"><i class="fa-solid fa-chart-column"></i></div>
           <h4>Yield Prediction</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore asperiores dolor reprehenderit enim, numquam suscipit.</p>
+          <p>Harness the power of machine learning to accurately forecast crop yields. Plan better and make informed decisions for a bountiful harvest.</p>
         </div>
         <div class="col-md px-5 py-4 text-center text-white">
           <div class="h1"><i class="fa-solid fa-leaf"></i></div>
           <h4>Plant Leaf Diesease Detection</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore asperiores dolor reprehenderit enim, numquam suscipit.</p>
+          <p>Ensure the health of your crops with early disease detection. Simply upload a leaf image, and let our application identify and address potential issues.</p>
         </div>
         
       </div>

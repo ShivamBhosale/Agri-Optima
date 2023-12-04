@@ -136,7 +136,7 @@ def profile(request):
         weather_data = None
 
     # Fetching news reports and handling soil/plant analysis
-    # news_api_key = "436b9f29eb13fb237b6731e8e6c14ac3"
+    news_api_key = "436b9f29eb13fb237b6731e8e6c14ac3_"
     url = "https://api.worldapi.com/reports?term=crops%20in%20canada&limit=20&offset=0&use_nlp=1&api_key="
     response = requests.get(url + news_api_key)
     data = response.json()
@@ -152,7 +152,7 @@ def profile(request):
     classification_result_plant = None
     form = SoilImageUploadForm()
     form_plant = PlantImageUploadForm()
-    rf_model = joblib.load('agri_optima_app/templates/agri_optima_app/Canada_Decision_Tree_Model.pkl')
+    rf_model = joblib.load('agri_optima_app/templates/agri_optima_app/Canada_DTC.pkl')
     rf_result = None
     rf_form = CropYieldForm()
 
@@ -171,13 +171,13 @@ def profile(request):
             rf_form = CropYieldForm(request.POST)
             if rf_form.is_valid():
                 # Extract features from the form
-                area = rf_form.cleaned_data['area']
+                # area = rf_form.cleaned_data['area']
                 item = rf_form.cleaned_data['item']
                 average_temp = rf_form.cleaned_data['average_temp']
                 pesticide_amount = rf_form.cleaned_data['pesticide_amount']
                 average_rain = rf_form.cleaned_data['average_rain']
 
-                input_features = [area, item, average_temp, pesticide_amount, average_rain]
+                input_features = [item, average_temp, pesticide_amount, average_rain,10.294448]
                 input_features = np.array(input_features).reshape(1, -1)
 
                 imputer = SimpleImputer(strategy='mean')
