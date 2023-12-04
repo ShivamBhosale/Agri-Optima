@@ -29,14 +29,14 @@
           <li class="nav-item ">
             <a href="{% url "home" %}"  class="nav-link nav-link-home">Home</a>
           </li>
-          <li class="nav-item ">
+          <!-- <li class="nav-item ">
             <a href="#services" class="nav-link nav-link-services">Services</a>
           </li>
           <li class="nav-item">
             <a href="#about" class="nav-link  nav-link-about">About</a>
-          </li>
+          </li> -->
           <li class="nav-item">
-            <a href="{% url 'login' %}" class="nav-link">{% if user.is_authenticated %}Profile{% else %}Login{% endif %}</a>
+            <a href="{% url 'logout' %}" class="nav-link">Logout</a>
           </li>
         </ul>
       </div>
