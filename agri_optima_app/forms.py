@@ -53,11 +53,11 @@ class PlantImageUploadForm(forms.ModelForm):
 
 class CropYieldForm(forms.Form):
 
-    area = forms.FloatField(
-        label="Area",
-        widget=forms.TextInput(attrs={'placeholder': 'Enter the area'}),
-        required=False,
-    )
+    # area = forms.FloatField(
+    #     label="Area",
+    #     widget=forms.TextInput(attrs={'placeholder': 'Enter the area'}),
+    #     required=False,
+    # )
 
     item = forms.FloatField(
         label="Item",
