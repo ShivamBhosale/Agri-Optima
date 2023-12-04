@@ -117,7 +117,7 @@
           </div>
          
           <div id="crop-yield" style="display: none;">
-            <h2>Crop Yield Analysis for Canada</h2>
+            <h2>Crop Yield Prediction for Canada</h2>
            
             <form method="post" enctype="multipart/form-data" >
                 {% csrf_token %}
@@ -126,11 +126,18 @@
             </form>
             
             {% if rf_result is not None %}
-                <h3>Calculation Result</h3>
-                <p>{{ rf_result }} Yield/hectare</p>
-                <!-- Display additional information or results here -->
-            {% endif %}
-        </div>
+        <h3>Calculation Result</h3>
+        {% if rf_result == 1 %}
+            <p>High Yield Expected</p>
+        {% elif rf_result == 2 %}
+            <p>Medium Yield Expected</p>
+        {% elif rf_result == 3 %}
+            <p>Low Yield Expected</p>
+        {% elif rf_result == 4 %}
+            <p>Barely Any Yield Expected</p>
+        {% endif %}
+        <!-- Display additional information or results here -->
+    {% endif %}
 
           <div id="soil-analysis" style="display: none;">
             <h2>Soil Analysis</h2> 
@@ -527,6 +534,21 @@ fetchNews();
             line-height: 1.6;
             margin-bottom: 8px;
         }
+
+    #crop-yield form select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+    width: 250px; /* Adjust the width as needed */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+    #crop-yield form select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
 
 </style>
 </html>

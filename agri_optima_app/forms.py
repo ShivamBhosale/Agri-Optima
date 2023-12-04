@@ -53,17 +53,21 @@ class PlantImageUploadForm(forms.ModelForm):
 
 class CropYieldForm(forms.Form):
 
-    # area = forms.FloatField(
-    #     label="Area",
-    #     widget=forms.TextInput(attrs={'placeholder': 'Enter the area'}),
-    #     required=False,
-    # )
+    CROP_CHOICES = [
+        (0, 'Maize'),
+        (1, 'Potato'),
+        (2, 'Soybean'),
+        (3, 'Wheat'),
+    ]
 
-    item = forms.FloatField(
-        label="Item",
-        widget=forms.TextInput(attrs={'placeholder': 'Enter the item'}),
-        required=False,
+    item = forms.ChoiceField(
+        choices=CROP_CHOICES,
+        label="Crop Name",
+        widget=forms.Select(attrs={'placeholder': 'Select crop'}),
+        required=True,
     )
+
+    
     
     
     average_temp = forms.FloatField(
