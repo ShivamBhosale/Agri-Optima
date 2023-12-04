@@ -121,7 +121,9 @@
            
             <form method="post" enctype="multipart/form-data" >
                 {% csrf_token %}
+                <div class="form-fields">
                 {{ rf_form.as_p }}
+                </div>
                 <button type="submit" name="rf_form_submit">Calculate</button>
             </form>
             
@@ -138,7 +140,7 @@
         {% endif %}
         <!-- Display additional information or results here -->
     {% endif %}
-
+  </div>
           <div id="soil-analysis" style="display: none;">
             <h2>Soil Analysis</h2> 
             <form method="post" enctype="multipart/form-data" >
@@ -147,7 +149,7 @@
               {{ form }}
               <button type="submit" id="soil-image">Upload Image</button>
           </form>
-        
+    
             {% if form.instance.image %}
                 <h3>Uploaded Image</h3>
                 <img src="{{ form.instance.image.url }}" alt="Uploaded Image" width="250px">
@@ -417,7 +419,7 @@ fetchNews();
 }
 
 #pldd {
-            display: none;
+            display: block;
             padding: 10px;
             background-color: rgba(245, 245, 245, 0.5); /* Transparent background */
             border-radius: 20px; /* Increased border-radius for rounder edges */
@@ -548,6 +550,18 @@ fetchNews();
     #crop-yield form select:focus {
     border-color: #4CAF50;
     outline: none;
+}
+
+.form-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Adjust the number of columns and widths as needed */
+    gap: 10px; /* Adjust the gap between elements */
+}
+
+/* You can also add additional styling for the form inputs if necessary */
+.form-fields input,
+.form-fields select {
+    width: 100%; /* Adjust width as needed */
 }
 
 </style>

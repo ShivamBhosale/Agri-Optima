@@ -86,7 +86,8 @@ def profile(request):
         pro_pic = 'agri_optima_app/profile_pic/default.jpg'    
     
     # Fetching weather data based on user's location
-    api_key = '748d19e21dc8cba8d9f339407498ea21'
+    api_key = ''
+                # 748d19e21dc8cba8d9f339407498ea21
 
     def get_weather_data(latitude, longitude):
         url = f'http://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&units=metric&appid={api_key}'

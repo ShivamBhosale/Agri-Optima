@@ -63,6 +63,7 @@ class CropYieldForm(forms.Form):
     item = forms.ChoiceField(
         choices=CROP_CHOICES,
         label="Crop Name",
+        
         widget=forms.Select(attrs={'placeholder': 'Select crop'}),
         required=True,
     )
@@ -88,6 +89,10 @@ class CropYieldForm(forms.Form):
         required=False,
     )
     
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.label_suffix = None
 
 
 

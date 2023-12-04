@@ -4,7 +4,7 @@
     height: 100vh;
     background-image: url("../img/regi-back.jpg");
     background-position: center;
-    background-size: cover;
+    background-size: fixed;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
