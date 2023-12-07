@@ -54,6 +54,7 @@
             </div>                     
         </div>
         <ul>
+            <li class="profile-nav" data-target="weather"><i class="fa-solid fa-cloud-sun"></i><p>Weather</p></li>            
             <li class="profile-nav" data-target="crop-yield"><i class="fa-solid fa-chart-line"></i><p>Crop Yield</p></li>
             <li class="profile-nav" data-target="soil-analysis"><i class="fa-solid fa-magnifying-glass-chart"></i><p>Soil Analysis</p></li>
             <li class="profile-nav" data-target="pldd"><i class="fa-solid fa-leaf"></i><p>PLDD</p></li>
@@ -72,8 +73,9 @@
           <h1 class="main-header">Welcome To <span class="main-header-1">Agri-Optima</span></h1>
           <div id="hero-content">
             <h2 class="main-header">Choose a <span class="main-header-2">Service</span> from the <span class="main-header-2">Sidebar</span></h2>
-           
-              <div class="weather">
+           </div>
+              <div class="weather" id="weather" data-id="weather">
+                <h1>Hi there!!</h1>
                 {% if weather_data %}
                   
                       <div class="weather-card">
@@ -114,9 +116,9 @@
                   </div>
               </div>              
 
-          </div>
+          
          
-          <div id="crop-yield" style="display: none;">
+          <div id="crop-yield" data-id="crop-yield" style="display: none;">
             <h2>Crop Yield Prediction for Canada</h2>
            
             <form method="post" enctype="multipart/form-data" >
@@ -141,7 +143,7 @@
         <!-- Display additional information or results here -->
     {% endif %}
   </div>
-          <div id="soil-analysis" style="display: none;">
+          <div id="soil-analysis" data-id="soil-analysis" style="display: none;">
             <h2>Soil Analysis</h2> 
             <form method="post" enctype="multipart/form-data" >
               {% csrf_token %}
@@ -188,7 +190,7 @@
                
             {% endif %}
         </div>
-        <div id="pldd" style="display: none;">
+        <div id="pldd" data-id="pldd" style="display: none;">
           <h2>Plant Leaf Disease Detection</h2>
           <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -304,7 +306,7 @@
     </div>
 </div>    -->
 
-<script src="/agri_optima_app/static/js/profile.js"></script>
+<!-- <script src="/agri_optima_app/static/js/profile.js"></script> -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
@@ -363,7 +365,144 @@ fetchNews();
 
 <script src="/agri_optima_app/static/js/news.js"></script>
 
+<!-- <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get all the profile-nav items
+    const profileNavItems = document.querySelectorAll(".profile-nav");
+  
+    // Get all the content divs in main-content-sub
+    const contentDivs = document.querySelectorAll("#main-content-sub > div");
+  
+    // Function to show the corresponding content div
+    function showContent(target) {
+        contentDivs.forEach((div) => {
+            div.style.display = "none";
+        });
+  
+        const correspondingDiv = document.getElementById(target);
+        if (correspondingDiv) {
+            correspondingDiv.style.display = "block";
+        }
+  
+        // Reset the color of all profile-nav items to the normal color
+        profileNavItems.forEach((navItem) => {
+            navItem.style.color = "black"; // Set the normal color here
+        });
+    }
+  
+    // Add click event listeners to the profile-nav items
+    profileNavItems.forEach((item) => {
+        item.addEventListener("click", () => {
+            const target = item.getAttribute("data-target");
+            showContent(target);
+  
+            // Store the active state in local storage
+            localStorage.setItem("activeContent", target);
+  
+            // Change the color of the clicked profile-nav item to white
+            item.style.color = "white";
+        });
+    });
+  
+    // Check if there is an activeContent in local storage
+    const activeContent = localStorage.getItem("activeContent");
+    if (activeContent) {
+        showContent(activeContent);
+    }
+});
 
+</script> -->
+<!-- <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const profileNavItems = document.querySelectorAll(".profile-nav");
+    const contentDivs = document.querySelectorAll("#main-content-sub > div");
+
+    function showContent(target) {
+        contentDivs.forEach((div) => {
+            div.style.display = "none";
+        });
+
+        const correspondingDiv = document.getElementById(target);
+        if (correspondingDiv) {
+            correspondingDiv.style.display = "block";
+        }
+
+        profileNavItems.forEach((navItem) => {
+            navItem.style.color = "black";
+        });
+
+        const correspondingNavItem = document.querySelector(`[data-target="${target}"]`);
+        if (correspondingNavItem) {
+            correspondingNavItem.style.color = "white";
+        }
+    }
+
+    profileNavItems.forEach((item) => {
+        item.addEventListener("click", () => {
+            const target = item.getAttribute("data-target");
+            showContent(target);
+        });
+    });
+
+    // Show the weather content by default
+    showContent("weather");
+});
+
+
+</script> -->
+
+
+  <!-- Workind one  -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get all the profile-nav items
+    const profileNavItems = document.querySelectorAll(".profile-nav");
+
+    // Get all the content divs in main-content-sub
+    const contentDivs = document.querySelectorAll("#main-content-sub > div");
+
+
+    function showContent(target) {
+        contentDivs.forEach((div) => {
+            div.style.display = "none";
+        });
+
+        const correspondingDiv = document.getElementById(target);
+        if (correspondingDiv) {
+            correspondingDiv.style.display = "block";
+        }
+
+        // Reset the color of all profile-nav items to the normal color
+        profileNavItems.forEach((navItem) => {
+            navItem.style.color = "black"; // Set the normal color here
+        });
+
+        // Find the corresponding profile-nav item and change its color to white
+        const correspondingNavItem = document.querySelector(`[data-target="${target}"]`);
+        if (correspondingNavItem) {
+            correspondingNavItem.style.color = "white";
+        }
+    }
+
+    // Add click event listeners to the profile-nav items
+    profileNavItems.forEach((item) => {
+        item.addEventListener("click", () => {
+            const target = item.getAttribute("data-target");
+            showContent(target);
+
+            // Store the active state in local storage
+            localStorage.setItem("activeContent", target);
+        });
+    });
+
+    // Check if there is an activeContent in local storage
+    const activeContent = localStorage.getItem("activeContent");
+    if (activeContent) {
+        showContent(activeContent);
+    }
+});
+
+</script>
 
 </body>
 <style>
@@ -419,13 +558,14 @@ fetchNews();
 }
 
 #pldd {
-            display: none;
+            display: block;
             padding: 10px;
             background-color: rgba(245, 245, 245, 0.5); /* Transparent background */
             border-radius: 20px; /* Increased border-radius for rounder edges */
             margin-top: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjusted shadow */
             overflow-y: auto;
+            height: auto;
         }
 
         #pldd h2 {
