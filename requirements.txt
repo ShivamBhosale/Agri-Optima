@@ -133,7 +133,7 @@ pyrsistent @ file:///Users/ec2-user/ci_py311/pyrsistent_1678316053523/work
 PySocks @ file:///Users/ec2-user/ci_py311/pysocks_1678315868424/work
 python-dateutil @ file:///tmp/build/80754af9/python-dateutil_1626374649649/work
 python-json-logger @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_49p5x2bjzn/croot/python-json-logger_1683823814668/work
-python-multipart==0.0.6
+python-multipart==0.0.7
 pytz @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_e0y2h1cdsw/croot/pytz_1695131602326/work
 PyYAML @ file:///Users/ec2-user/ci_py311/pyyaml_1678324445670/work
 pyzmq @ file:///Users/ec2-user/ci_py311/pyzmq_1678316754714/work
