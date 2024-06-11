@@ -158,7 +158,7 @@ six @ file:///tmp/build/80754af9/six_1644875935023/work
 sniffio @ file:///Users/ec2-user/ci_py311/sniffio_1678317345022/work
 sortedcontainers==2.4.0
 soupsieve @ file:///private/var/folders/c_/qfmhj66j0tn016nkx_th4hxm0000gp/T/abs_9cjy8iflks/croot/soupsieve_1696347576367/work
-sqlparse==0.4.4
+sqlparse==0.5.0
 stack-data @ file:///opt/conda/conda-bld/stack_data_1646927590127/work
 starlette==0.27.0
 stripe==7.3.0
