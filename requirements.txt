@@ -185,7 +185,7 @@ wcwidth @ file:///Users/ktietz/demo/mc3/conda-bld/wcwidth_1629357192024/work
 webencodings==0.5.1
 websocket-client @ file:///Users/ec2-user/ci_py311/websocket-client_1678317758506/work
 websockets==11.0.3
-Werkzeug==3.0.0
+Werkzeug==3.0.3
 widgetsnbextension==4.0.9
 wrapt==1.14.1
 wsproto==1.2.0
