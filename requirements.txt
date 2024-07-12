@@ -29,7 +29,7 @@ cycler==0.12.0
 debugpy @ file:///private/var/folders/sy/f16zz6x50xz3113nwtb9bvq00000gp/T/abs_30hp2nowkm/croot/debugpy_1690905056188/work
 decorator @ file:///opt/conda/conda-bld/decorator_1643638310831/work
 defusedxml @ file:///tmp/build/80754af9/defusedxml_1615228127516/work
-Django==4.2.5
+Django==4.2.14
 django-clearcache==1.2.1
 entrypoints @ file:///Users/ec2-user/ci_py311/entrypoints_1678316169365/work
 executing @ file:///opt/conda/conda-bld/executing_1646925071911/work
